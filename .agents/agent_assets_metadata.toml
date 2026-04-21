@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "4oX3HqQQ1jdF6MiwSHggx"
+uri = "file://artifacts/portfolio/src/assets/images/project-stocks.png"
+type = "image"
+title = "Stock market data visualization"
+
+[[generated]]
+id = "DMwMx8rS9R08U7qc_azQ9"
+uri = "file://artifacts/portfolio/src/assets/images/project-codebricks.png"
+type = "image"
+title = "Component platform registry"
+
+[[generated]]
+id = "yICV4OEz9bIRw5f3lCvnR"
+uri = "file://artifacts/portfolio/src/assets/images/project-data-platform.png"
+type = "image"
+title = "AI Data Platform flow"

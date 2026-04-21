@@ -1,0 +1,246 @@
+You are a senior frontend-focused full stack engineer (5+ years experience). Build a production-grade portfolio website based on the following developer profile.
+
+-------------------------
+👤 DEVELOPER PROFILE
+-------------------------
+Name: Shantanu Upadhyay
+Role: Frontend-Focused Full Stack Engineer
+Experience: 4+ years
+Location: Pune, India
+
+Summary:
+Frontend-focused engineer with strong expertise in React.js, TypeScript, and scalable UI architecture. Known for performance optimization (30–40% improvements), building enterprise-grade platforms, and integrating AI/LLM workflows using Ollama pipelines. :contentReference[oaicite:0]{index=0}
+
+Core Strengths:
+- Advanced React architecture (memoization, state normalization, lazy loading)
+- Performance engineering & render optimization
+- Full-stack development (Node.js, APIs, WebSockets)
+- AI/LLM integration into real-time UI systems
+- Scalable component systems
+- Enterprise-grade UI/UX thinking
+
+-------------------------
+🎯 GOAL
+-------------------------
+Build a visually stunning, highly performant, interactive portfolio website that reflects:
+- Senior-level engineering maturity
+- Strong frontend craftsmanship
+- Modern UI/UX sensibilities
+- Performance-first mindset
+- AI/engineering depth
+
+It should NOT feel like a template or junior project.
+
+-------------------------
+🧱 TECH STACK (MANDATORY)
+-------------------------
+Frontend:
+- React (with TypeScript)
+- Vite or Next.js (prefer Next.js App Router)
+- TailwindCSS (with custom design system)
+- Framer Motion (primary animations)
+- GSAP (advanced scroll animations)
+- Three.js (hero section or background experience)
+
+State Management:
+- Zustand (preferred) OR Redux Toolkit
+
+Backend (optional but preferred):
+- Node.js + Express
+- REST APIs (for contact form / analytics simulation)
+- WebSocket demo (optional for showcasing real-time skills)
+
+Database (optional):
+- MongoDB or PostgreSQL (only if needed for contact/messages)
+
+-------------------------
+🏗️ ARCHITECTURE
+-------------------------
+Use a scalable, modular architecture:
+
+/src
+  /app or /pages
+  /components
+    /ui (reusable primitives)
+    /sections (Hero, About, Experience, Projects, Contact)
+  /features
+    /projects
+    /experience
+  /hooks
+  /lib (utils, API clients)
+  /store (Zustand)
+  /styles
+  /types
+
+Follow:
+- Atomic design principles
+- Separation of concerns
+- Strong typing everywhere
+- Reusable and composable components
+
+-------------------------
+🎨 DESIGN SYSTEM
+-------------------------
+Create a premium, modern developer aesthetic:
+
+Theme:
+- Dark-first theme
+- Primary: Indigo / Electric Blue
+- Accent: Neon Purple / Cyan
+- Background: Deep charcoal / near black
+- Glassmorphism + subtle gradients
+
+Typography:
+- Clean modern fonts (Inter, Space Grotesk)
+- Strong hierarchy
+
+UI Style:
+- Minimal but expressive
+- Smooth transitions
+- Micro-interactions everywhere
+- Developer-centric feel (not corporate)
+
+-------------------------
+✨ KEY SECTIONS
+-------------------------
+
+1. HERO SECTION
+- 3D interactive background (Three.js)
+- Animated intro text
+- Typing effect for roles
+- CTA buttons (Projects, Contact)
+- Subtle parallax effects
+
+2. ABOUT
+- Narrative about engineering mindset
+- Highlight performance + AI experience
+
+3. EXPERIENCE
+- Timeline layout
+- Focus on impact metrics:
+  - 40% render optimization
+  - sub-200ms APIs
+  - large-scale systems
+- Expandable cards
+
+4. PROJECTS
+Include:
+- Real-time stock platform (WebSockets)
+- CodeBricks platform
+- Enterprise UI platforms
+
+Each project:
+- Animated card
+- Tech stack badges
+- Live/demo/github links
+- Performance highlights
+
+5. SKILLS
+- Animated skill grid
+- Categorized (Frontend, Backend, AI, DevOps)
+
+6. CONTACT
+- Form with validation
+- Optional backend integration
+- Smooth success animation
+
+-------------------------
+🎬 ANIMATIONS & EFFECTS
+-------------------------
+- Page transitions (Framer Motion)
+- Scroll-triggered animations (GSAP)
+- Hover microinteractions
+- Smooth scrolling
+- Lazy loading + skeleton loaders
+- Parallax sections
+
+Performance is critical:
+- Avoid heavy unnecessary animations
+- Maintain 60fps
+
+-------------------------
+⚡ PERFORMANCE OPTIMIZATION
+-------------------------
+- Code splitting
+- Lazy loading components
+- Memoization (React.memo, useMemo, useCallback)
+- Image optimization
+- Virtualization for large lists
+- Avoid re-renders via state normalization
+- Lighthouse score target: 90+
+
+-------------------------
+🧠 ADVANCED FEATURES (IMPORTANT)
+-------------------------
+- AI demo section (simulate LLM interaction UI)
+- Show "AI-assisted workflow" concept
+- Mock chat or classification UI
+
+- Real-time demo (WebSocket simulation)
+
+- Developer insights section:
+  - Show architecture thinking
+  - Show metrics & impact
+
+-------------------------
+📱 RESPONSIVENESS
+-------------------------
+- Fully responsive
+- Mobile-first
+- Tablet optimized
+- No layout shifts
+
+-------------------------
+📦 DEPLOYMENT
+-------------------------
+- Ready for Vercel deployment
+- Environment variables configured
+- Clean production build
+
+-------------------------
+📘 README (VERY IMPORTANT)
+-------------------------
+Generate a HIGH-QUALITY README.md including:
+
+- Project overview
+- Tech stack explanation
+- Architecture breakdown
+- Folder structure explanation
+- Performance strategies used
+- Animation strategy
+- Setup instructions
+- Deployment guide
+- Screenshots (placeholders)
+- Future improvements
+
+Make README visually rich:
+- Emojis
+- Sections
+- Clean formatting
+- Looks like senior engineer wrote it
+
+-------------------------
+🧪 CODE QUALITY
+-------------------------
+- Strict TypeScript
+- ESLint + Prettier
+- Clean naming conventions
+- No dead code
+- Maintainable and scalable
+
+-------------------------
+🚫 AVOID
+-------------------------
+- Generic templates
+- Basic bootstrap-like UI
+- Overcrowded design
+- Poor animation performance
+
+-------------------------
+✅ OUTPUT
+-------------------------
+- Full working project
+- Clean folder structure
+- Well-commented critical parts
+- Production-ready code
+- README included
