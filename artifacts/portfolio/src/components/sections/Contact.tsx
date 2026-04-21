@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { PROFILE } from "@/data/portfolio";
+import { useToast } from "@/hooks/use-toast";
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const formSchema = z.object({
@@ -19,6 +20,8 @@ const formSchema = z.object({
 
 export function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, "") ?? "";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -29,16 +32,36 @@ export function Contact() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Simulate API call
-    setTimeout(() => {
-      console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const response = await fetch(`${apiBaseUrl}/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const payload = (await response.json()) as { ok?: boolean; message?: string };
+
+      if (!response.ok || !payload.ok) {
+        throw new Error(payload.message ?? "Unable to send your message right now.");
+      }
+
       setIsSubmitted(true);
       form.reset();
-      
-      // Reset success message after 5 seconds
+
       setTimeout(() => setIsSubmitted(false), 5000);
-    }, 800);
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Message failed",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Unable to send your message right now. Please email me directly.",
+      });
+    }
   }
 
   return (

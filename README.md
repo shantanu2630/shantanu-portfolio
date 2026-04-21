@@ -99,7 +99,7 @@ artifacts/portfolio/
 5. **AI/LLM Showcase** — Simulated React ↔ Ollama classification flow with mock terminal and animated Ingest → Classify → Enrich → Graph pipeline.
 6. **Skills** — Categorized animated grid + live engineering metrics widget.
 7. **Education** — RGPV, B.E. Computer Science.
-8. **Contact** — Validated form (react-hook-form + zod) with success animation.
+8. **Contact** — Validated form (react-hook-form + zod) that posts to `/api/contact` and sends email via SMTP.
 
 ---
 
@@ -148,6 +148,16 @@ PORT=5173 BASE_PATH=/ pnpm --filter @workspace/portfolio run dev
 
 Then open `http://localhost:5173/`.
 
+### Run the contact API (development)
+
+The contact form now submits to the API server. Run it in a second terminal:
+
+```bash
+PORT=3001 pnpm --filter @workspace/api-server run dev
+```
+
+The frontend dev server proxies `/api/*` to `http://127.0.0.1:3001` by default. If your API runs elsewhere, set `API_PROXY_TARGET` before starting the portfolio app.
+
 ### Typecheck
 
 ```bash
@@ -168,7 +178,7 @@ Build output: `artifacts/portfolio/dist/public/`.
 
 ## Environment Variables
 
-The portfolio is a static frontend and does not require API keys. Two variables drive the dev/preview server and are wired automatically by Replit workflows:
+The portfolio frontend still uses `PORT` and `BASE_PATH`, and the contact form now also depends on SMTP configuration in the API server.
 
 | Variable     | Required | Purpose                                                                 |
 | ------------ | -------- | ----------------------------------------------------------------------- |
@@ -176,8 +186,23 @@ The portfolio is a static frontend and does not require API keys. Two variables 
 | `BASE_PATH`  | Yes      | URL prefix the app is served under (e.g. `/`). Used as Vite `base`.     |
 | `NODE_ENV`   | No       | `development` enables Replit dev plugins; `production` for builds.      |
 | `REPL_ID`    | No       | Auto-set on Replit; gates the cartographer / dev-banner plugins.        |
+| `API_PROXY_TARGET` | No | Dev-only proxy target for `/api`; defaults to `http://127.0.0.1:3001`. |
+| `VITE_API_BASE_URL` | No | Absolute API base URL for deployed frontend builds when `/api` is not same-origin. |
 
-When running outside Replit, set `PORT` and `BASE_PATH` explicitly (see above).
+API server variables:
+
+| Variable            | Required | Purpose                                                            |
+| ------------------- | -------- | ------------------------------------------------------------------ |
+| `PORT`              | Yes      | Port the Express API server binds to.                              |
+| `SMTP_HOST`         | Yes      | SMTP host, for example `smtp.gmail.com`.                           |
+| `SMTP_PORT`         | Yes      | SMTP port, usually `465` for SSL or `587` for STARTTLS.            |
+| `SMTP_SECURE`       | No       | Set to `true` for implicit SSL; defaults to `true` when port is `465`. |
+| `SMTP_USER`         | Yes      | SMTP username.                                                     |
+| `SMTP_PASS`         | Yes      | SMTP password or app password.                                     |
+| `CONTACT_TO_EMAIL`  | Yes      | Inbox that should receive contact form submissions.                |
+| `CONTACT_FROM_EMAIL`| No       | Sender address used by the server; defaults to `SMTP_USER`.        |
+
+When running outside Replit, set the frontend `PORT` and `BASE_PATH` explicitly and provide the SMTP variables to the API server.
 
 ---
 
@@ -212,7 +237,7 @@ This package builds to a static bundle and can be served by any static host (Ver
 
 - MDX-driven case studies for each project with deep-dive write-ups.
 - A blog section for engineering notes (perf debugging, LLM integration patterns).
-- Real backend for the contact form (Resend / Postmark) with rate-limiting.
+- Rate-limiting and spam protection for the contact form.
 - Live GitHub activity feed via the public GitHub API.
 - View-transition API for cross-section navigation polish.
 - Lighthouse CI in the build pipeline to lock the perf budget.
